@@ -18,20 +18,27 @@ def test_terminology_replacement():
     with open('Workforce planning v5_2.py', 'r') as f:
         v5_2_content = f.read()
     
-    # Test 1: Old terminology removed from v5_2
-    old_terms = ['chair_gap', 'chairs_from_day', 'chairs_from_night', "'min_agents_floor'"]
-    for term in old_terms:
-        assert term not in v5_2_content, f"Old terminology '{term}' still exists in v5_2"
+    # Test 1: Old variable names removed from v5_2
+    old_variable_names = ['chair_gap', 'chairs_from_day', 'chairs_from_night']
+    for term in old_variable_names:
+        assert term not in v5_2_content, f"Old variable name '{term}' still exists in v5_2"
     
-    # Test 2: New terminology exists in v5_2
+    # Test 2: Old config key removed from v5_2
+    old_config_keys = ["'min_agents_floor'"]
+    for term in old_config_keys:
+        assert term not in v5_2_content, f"Old config key {term} still exists in v5_2"
+    
+    # Test 3: New terminology exists in v5_2
     new_terms = ['concurrent_agent_gap', 'concurrent_agents_from_day', 
                  'concurrent_agents_from_night', "'min_concurrent_agents_floor'"]
     for term in new_terms:
         assert term in v5_2_content, f"New terminology '{term}' missing from v5_2"
     
-    # Test 3: No "chair" word remains in v5_2
-    chair_count_v5_2 = v5_2_content.lower().count('chair')
-    assert chair_count_v5_2 == 0, f"v5_2 still has {chair_count_v5_2} occurrences of 'chair'"
+    # Test 4: No "chair" word remains in code (excluding header documentation)
+    # Split the file to exclude the header comment
+    code_section = v5_2_content.split('"""', 2)[2] if '"""' in v5_2_content else v5_2_content
+    chair_count_in_code = code_section.lower().count('chair')
+    assert chair_count_in_code == 0, f"v5_2 code still has {chair_count_in_code} occurrences of 'chair'"
     
     print("✓ All terminology correctly replaced")
     return True

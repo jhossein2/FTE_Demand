@@ -1,9 +1,14 @@
 """
 ================================================================================
-WORKFORCE PLANNING SYSTEM - VERSION 3
+WORKFORCE PLANNING SYSTEM - VERSION 5.2
 ================================================================================
 
-Fixes:
+Terminology Update (v5.2):
+- Refactored "chair" terminology to "concurrent agent" to align with TZV language
+- Updated config key from min_agents_floor to min_concurrent_agents_floor
+- All logic and calculations remain identical to v5.1
+
+Previous Fixes (v3 baseline):
 1. Show ALL 4 buckets per month (not just worst case)
 2. Add shift cap - max FTE deployable per shift
 3. Add occupancy metrics:
