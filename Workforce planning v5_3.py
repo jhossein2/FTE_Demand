@@ -1,12 +1,11 @@
 """
 ================================================================================
-WORKFORCE PLANNING SYSTEM - VERSION 5.3
+WORKFORCE PLANNING SYSTEM - VERSION 5.2
 ================================================================================
 
-Terminology Update (v5.3 - Enhanced):
+Terminology Update (v5.2):
 - Refactored "chair" terminology to "concurrent agent" to align with TZV language
 - Updated config key from min_agents_floor to min_concurrent_agents_floor
-- Enhanced variable naming: n_available → concurrent_agents_available, n_required → required_agents
 - All logic and calculations remain identical to v5.1
 
 Previous Fixes (v3 baseline):
